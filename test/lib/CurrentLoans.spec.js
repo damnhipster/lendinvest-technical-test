@@ -7,7 +7,7 @@ import Loan from '../../src/lib/Loan.jsx';
 
 describe('<Index/>', function() {
 
-  const defaultProps = { heading: "test" };
+  const defaultProps = { heading: "test", loans: [] };
 
   it('should contain a single heading', function() {
     const wrapper = shallow(<Index {...defaultProps} />);
