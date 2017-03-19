@@ -16,6 +16,7 @@ export default class Loan extends React.Component {
         <p>Tranche: {this.props.tranche}</p>
         <p>Amount: {this.props.amount}</p>
         <LoanValues {...props} />
+        <button>Invest in Loan</button>
       </div>
     );
   }

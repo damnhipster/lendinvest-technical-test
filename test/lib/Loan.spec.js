@@ -39,7 +39,14 @@ describe('<Loan/>', function() {
   it('should contain the <LoanValues/>', function() {
     const props = { ...defaultProps }
     const wrapper = shallow(<Loan {...props} />);
-    expect(wrapper.find(LoanValues).exists()).to.equal(true);
+    expect(wrapper.find(LoanValues).exists()).to.be.true;
+  });
+
+  it('should contain a button to invest', function() {
+    const props = { ...defaultProps }
+    const wrapper = shallow(<Loan {...props} />);
+    expect(wrapper.find('button').exists()).to.be.true;
+    expect(wrapper.find('button').text()).to.equal('Invest in Loan');
   });
 
   it('should pass the annualisedReturn and loanToValue through to <LoanValues/>', function() {
