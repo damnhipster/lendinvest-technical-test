@@ -24,21 +24,29 @@ export default class Loan extends React.Component {
   }
 
   render() {
-    let { annualisedReturn, ltv: loanToValue } = this.props;
+    let { annualisedReturn, ltv, title, tranche, amount, available, termRemaining } = this.props;
     const props = {
-      annualisedReturn: annualisedReturn,
-      loanToValue: loanToValue
+      loanValue: {
+        annualisedReturn: annualisedReturn,
+        loanToValue: ltv
+      },
+      investModal: {
+        title: title,
+        amountAvailable: available,
+        remainingTime: termRemaining
+      }
     };
     return (
       <div>
-        <h2>{this.props.title}</h2>
-        <p>Tranche: {this.props.tranche}</p>
-        <p>Amount: {this.props.amount}</p>
-        <LoanValues {...props} />
+        <h2>{title}</h2>
+        <p>Tranche: {tranche}</p>
+        <p>Amount: {amount}</p>
+        <LoanValues {...props.loanValue} />
         <button onClick={this.handleOpenModal}>
           Invest in Loan
         </button>
         <InvestModal
+          {...props.investModal}
           isOpen={this.state.showModal}
           close={this.handleCloseModal}
         />

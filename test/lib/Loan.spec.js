@@ -53,7 +53,7 @@ describe('<Loan/>', function() {
     expect(wrapper.find(LoanValues).exists()).to.be.true;
   });
 
-  it('should pass the annualisedReturn and loanToValue through to <LoanValues/>', function() {
+  it('should set annualisedReturn and loanToValue in <LoanValues/>', function() {
     const props = { ...defaultProps }
     const wrapper = shallow(<Loan {...props} />);
     expect(wrapper.find(LoanValues).props()).to.have.all.keys(['annualisedReturn', 'loanToValue']);
@@ -90,6 +90,12 @@ describe('<Loan/>', function() {
     const props = { ...defaultProps }
     const wrapper = shallow(<Loan {...props} />);
     expect(wrapper.find(InvestModal).prop('close')).to.equal(wrapper.instance().handleCloseModal);
+  });
+
+  it('should set title, amount available and remaining time in <InvestModal/>', function() {
+    const props = { ...defaultProps }
+    const wrapper = shallow(<Loan {...props} />);
+    expect(wrapper.find(InvestModal).props()).to.contain.all.keys(['title', 'amountAvailable', 'remainingTime']);
   });
 
 });
