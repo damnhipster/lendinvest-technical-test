@@ -14,7 +14,7 @@ describe('<CurrentLoans/>', function() {
     const wrapper = shallow(<CurrentLoans {...props} />);
     expect(wrapper.first().contains(
       <h1>test</h1>
-    )).to.equal(true);
+    )).to.be.true;
   });
 
   it('should contain a list of loans', function() {

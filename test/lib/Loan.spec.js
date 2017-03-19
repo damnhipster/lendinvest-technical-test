@@ -19,7 +19,7 @@ describe('<Loan/>', function() {
     const wrapper = shallow(<Loan {...props} />);
     expect(wrapper.children().at(0).contains(
       <h2>test</h2>
-    )).to.equal(true);
+    )).to.be.true;
   });
 
   //having problems with enzyme's contain assertion, using string assertion below instead
