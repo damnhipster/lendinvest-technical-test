@@ -27,5 +27,12 @@ module.exports = {
   plugins: [new HtmlWebpackPlugin({
     filename: 'index.html',
     template: './src/assets/index.html'
-  })]
+  })],
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8081'
+      }
+    }
+  }
 }
