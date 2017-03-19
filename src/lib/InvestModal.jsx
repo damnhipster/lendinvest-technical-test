@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import ReactModal from 'react-modal';
 
 export default class InvestModal extends React.Component {
@@ -18,4 +18,12 @@ export default class InvestModal extends React.Component {
     );
   }
 
+}
+
+InvestModal.propTypes = {
+  isOpen: PropTypes.bool,
+  close: PropTypes.func,
+  title: PropTypes.string,
+  amountAvailable: PropTypes.number,
+  remainingTime: PropTypes.number
 }

@@ -21,3 +21,7 @@ export default class AvailableInvestment extends React.Component {
   }
 
 }
+
+AvailableInvestment.propTypes = {
+  loans: PropTypes.array
+}

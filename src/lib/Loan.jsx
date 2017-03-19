@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import LoanValues from './LoanValues.jsx';
 import InvestModal from './InvestModal.jsx';
@@ -54,4 +54,14 @@ export default class Loan extends React.Component {
     );
   }
 
+}
+
+Loan.propTypes = {
+  annualisedReturn: PropTypes.number,
+  ltv: PropTypes.number,
+  title: PropTypes.string,
+  tranche: PropTypes.string,
+  amount: PropTypes.number,
+  available: PropTypes.number,
+  termRemaining: PropTypes.number
 }

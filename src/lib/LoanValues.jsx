@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 export default class LoanValues extends React.Component {
 
@@ -11,4 +11,9 @@ export default class LoanValues extends React.Component {
     );
   }
 
+}
+
+LoanValues.propTypes = {
+  annualisedReturn: PropTypes.number,
+  loanToValue: PropTypes.number
 }
