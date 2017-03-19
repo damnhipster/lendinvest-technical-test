@@ -26,7 +26,7 @@ describe('<CurrentLoans/>', function() {
   it('should pass loan information through to Loan', function() {
     const props = { ...defaultProps, loans: [1] }
     const wrapper = shallow(<CurrentLoans {...props} />);
-    expect(wrapper.find(Loan).props()).to.have.all.keys(['title', 'tranche', 'amount']);
+    expect(wrapper.find(Loan).props()).to.have.all.keys(['title', 'tranche', 'amount', 'annualisedReturn', 'ltv']);
   });
 
 });

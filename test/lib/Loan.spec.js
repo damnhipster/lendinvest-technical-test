@@ -23,6 +23,7 @@ describe('<Loan/>', function() {
   });
 
   //having problems with enzyme's contain assertion, using string assertion below instead
+
   it('should contain the tranche', function() {
     const props = { ...defaultProps, tranche: "test" }
     const wrapper = shallow(<Loan {...props} />);
