@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
-import Index from '../lib/index.js';
+import Index from '../src/lib/index.jsx';
 
 describe('<Index/>', function() {
 
