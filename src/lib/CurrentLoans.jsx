@@ -1,8 +1,9 @@
 import React, {PropTypes} from 'react';
 
 import Loan from './Loan.jsx';
+import AvailableInvestment from './AvailableInvestment.jsx';
 
-export default class Index extends React.Component {
+export default class CurrentLoans extends React.Component {
 
   render() {
     const loans = this.props.loans.map((loan) => {
@@ -22,13 +23,14 @@ export default class Index extends React.Component {
       <div>
         <h1>{this.props.heading}</h1>
         <ul>{loans}</ul>
+        <AvailableInvestment loans={this.props.loans}/>
       </div>
     );
   }
 
 }
 
-Index.propTypes = {
+CurrentLoans.propTypes = {
   heading: PropTypes.string,
   loans: PropTypes.array
 }

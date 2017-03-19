@@ -4,6 +4,7 @@ import {expect} from 'chai';
 
 import CurrentLoans from '../../src/lib/CurrentLoans.jsx';
 import Loan from '../../src/lib/Loan.jsx';
+import AvailableInvestment from '../../src/lib/AvailableInvestment.jsx';
 
 describe('<CurrentLoans/>', function() {
 
@@ -27,6 +28,19 @@ describe('<CurrentLoans/>', function() {
     const props = { ...defaultProps, loans: [1] }
     const wrapper = shallow(<CurrentLoans {...props} />);
     expect(wrapper.find(Loan).props()).to.have.all.keys(['title', 'tranche', 'amount', 'annualisedReturn', 'ltv', 'termRemaining', 'available']);
+  });
+
+  it('should contain the amount available to invest', function() {
+    const props = { ...defaultProps, loans: [1] }
+    const wrapper = shallow(<CurrentLoans {...props} />);
+    expect(wrapper.find(AvailableInvestment).exists()).to.be.true;
+  });
+
+  it('should pass the loans through to <AvailableInvestment/>', function() {
+    const loans = [1,2,3];
+    const props = { ...defaultProps, loans: loans }
+    const wrapper = shallow(<CurrentLoans {...props} />);
+    expect(wrapper.find(AvailableInvestment).prop('loans')).to.equal(loans);
   });
 
 });
