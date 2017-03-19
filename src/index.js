@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import styles from './css/style.css';
-import Index from './lib/index.jsx';
+import CurrentLoans from './lib/CurrentLoans.jsx';
 
-ReactDOM.render(<Index {...{heading: 'hello world'}}/>, document.getElementById('main'));
+const defaultProps = {
+  heading: 'Current Loans'
+};
+
+ReactDOM.render(<CurrentLoans {...defaultProps}/>, document.getElementById('main'));

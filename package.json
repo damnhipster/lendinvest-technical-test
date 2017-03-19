@@ -7,7 +7,7 @@
     "start": "npm-run-all --parallel dev:*",
     "dev:assets": "webpack-dev-server",
     "dev:api": "./scripts/api-server.js",
-    "test": "mocha --compilers js:babel-register"
+    "test": "mocha --recursive --compilers js:babel-register"
   },
   "author": "",
   "license": "ISC",
