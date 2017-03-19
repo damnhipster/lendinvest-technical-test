@@ -7,6 +7,7 @@ export default class Loan extends React.Component {
       <div>
         <h2>{this.props.title}</h2>
         <p>Tranche: {this.props.tranche}</p>
+        <p>Amount: {this.props.amount}</p>
       </div>
     );
   }

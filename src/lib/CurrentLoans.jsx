@@ -6,8 +6,12 @@ export default class Index extends React.Component {
 
   render() {
     const loans = this.props.loans.map((loan) => {
-      let { title, tranche } = loan;
-      const props = { title: title, tranche: tranche };
+      let { title, tranche, amount } = loan;
+      const props = {
+        title: title,
+        tranche: tranche,
+        amount: amount
+      };
       return <Loan {...props}/>;
     })
     return (

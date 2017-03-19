@@ -26,4 +26,11 @@ describe('<Loan/>', function() {
     expect(wrapper.children().at(1).html()).to.equal("<p>Tranche: test</p>");
   });
 
+  it('should contain the amount of the loan', function() {
+    const props = { ...defaultProps, amount: 99999 }
+    const wrapper = shallow(<Loan {...props} />);
+    //having problems with enzyme's contain assertion, using string assertion instead
+    expect(wrapper.children().at(2).html()).to.equal("<p>Amount: 99999</p>");
+  });
+
 });
