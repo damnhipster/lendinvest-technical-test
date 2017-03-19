@@ -12,10 +12,15 @@ export default class Loan extends React.Component {
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   handleOpenModal () {
     this.setState({ showModal: true });
+  }
+
+  handleCloseModal () {
+    this.setState({ showModal: false });
   }
 
   render() {
@@ -34,7 +39,8 @@ export default class Loan extends React.Component {
           Invest in Loan
         </button>
         <InvestModal
-           isOpen={this.state.showModal}
+          isOpen={this.state.showModal}
+          close={this.handleCloseModal}
         />
       </div>
     );

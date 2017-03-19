@@ -15,10 +15,20 @@ describe('<Loan/>', function() {
     annualisedReturn: 0
   };
 
+  describe('#constructor', function() {
+
+    it('should not show the modal', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      expect(wrapper.state().showModal).to.be.false;
+    });
+
+  });
+
   it('should contain the title', function() {
     const props = { ...defaultProps, title: "test" }
     const wrapper = shallow(<Loan {...props} />);
-    expect(wrapper.children().at(0).contains(
+    expect(wrapper.children().at(0).matchesElement(
       <h2>test</h2>
     )).to.be.true;
   });
@@ -62,28 +72,24 @@ describe('<Loan/>', function() {
     expect(wrapper.find(InvestModal).exists()).to.be.true;
   });
 
-  describe('#constructor', function() {
-
-    it('should not show the modal', function() {
-      const props = { ...defaultProps }
-      const wrapper = shallow(<Loan {...props} />);
-      expect(wrapper.state().showModal).to.be.false;
-    });
-
-  });
-
   it('should show the <InvestModal/> when the button is clicked', function() {
-      const props = { ...defaultProps }
-      const wrapper = shallow(<Loan {...props} />);
-      wrapper.find('button').simulate('click');
-      expect(wrapper.state().showModal).to.be.true;
+    const props = { ...defaultProps }
+    const wrapper = shallow(<Loan {...props} />);
+    wrapper.find('button').simulate('click');
+    expect(wrapper.state().showModal).to.be.true;
   });
 
-  it('should pass the state showModal to <InvestModal/>', function() {
-      const props = { ...defaultProps }
-      const wrapper = shallow(<Loan {...props} />);
-      let showModal = wrapper.state().showModal;
-      expect(wrapper.find(InvestModal).prop('isOpen')).to.equal(showModal);
+  it('should set isOpen in <InvestModal/>', function() {
+    const props = { ...defaultProps }
+    const wrapper = shallow(<Loan {...props} />);
+    let showModal = wrapper.state().showModal;
+    expect(wrapper.find(InvestModal).prop('isOpen')).to.equal(showModal);
+  });
+
+  it('should set close in <InvestModal/>', function() {
+    const props = { ...defaultProps }
+    const wrapper = shallow(<Loan {...props} />);
+    expect(wrapper.find(InvestModal).prop('close')).to.equal(wrapper.instance().handleCloseModal);
   });
 
 });

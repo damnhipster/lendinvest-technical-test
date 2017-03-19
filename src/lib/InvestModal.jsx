@@ -1,10 +1,15 @@
 import React from 'react';
+import ReactModal from 'react-modal';
 
-export default class Loan extends React.Component {
+export default class InvestModal extends React.Component {
 
   render() {
     return (
-null
+      <ReactModal
+        isOpen={this.props.isOpen}
+        onRequestClose={this.props.close}
+        contentLabel="InvestModal"
+      />
     );
   }
 
