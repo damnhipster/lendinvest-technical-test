@@ -3,7 +3,11 @@ import React from 'react';
 export default class Loan extends React.Component {
 
   render() {
-    return null;
+    return (
+      <div>
+        <h2>{this.props.title}</h2>
+      </div>
+    );
   }
 
 }

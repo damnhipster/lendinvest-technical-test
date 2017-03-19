@@ -5,8 +5,8 @@ import Loan from './Loan.jsx';
 export default class Index extends React.Component {
 
   render() {
-    const loans = this.props.loans.map((id) => {
-      const props = { id: id };
+    const loans = this.props.loans.map((loan) => {
+      const props = { title: loan.title };
       return <Loan {...props}/>;
     })
     return (
