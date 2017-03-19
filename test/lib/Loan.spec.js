@@ -4,6 +4,7 @@ import {expect} from 'chai';
 
 import Loan from '../../src/lib/Loan.jsx';
 import LoanValues from '../../src/lib/LoanValues.jsx';
+import InvestModal from '../../src/lib/InvestModal.jsx';
 
 describe('<Loan/>', function() {
 
@@ -42,6 +43,12 @@ describe('<Loan/>', function() {
     expect(wrapper.find(LoanValues).exists()).to.be.true;
   });
 
+  it('should pass the annualisedReturn and loanToValue through to <LoanValues/>', function() {
+    const props = { ...defaultProps }
+    const wrapper = shallow(<Loan {...props} />);
+    expect(wrapper.find(LoanValues).props()).to.have.all.keys(['annualisedReturn', 'loanToValue']);
+  });
+
   it('should contain a button to invest', function() {
     const props = { ...defaultProps }
     const wrapper = shallow(<Loan {...props} />);
@@ -49,10 +56,34 @@ describe('<Loan/>', function() {
     expect(wrapper.find('button').text()).to.equal('Invest in Loan');
   });
 
-  it('should pass the annualisedReturn and loanToValue through to <LoanValues/>', function() {
+  it('should contain an <InvestModal/>', function() {
     const props = { ...defaultProps }
     const wrapper = shallow(<Loan {...props} />);
-    expect(wrapper.find(LoanValues).props()).to.have.all.keys(['annualisedReturn', 'loanToValue']);
+    expect(wrapper.find(InvestModal).exists()).to.be.true;
+  });
+
+  describe('#constructor', function() {
+
+    it('should not show the modal', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      expect(wrapper.state().showModal).to.be.false;
+    });
+
+  });
+
+  it('should show the <InvestModal/> when the button is clicked', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      wrapper.find('button').simulate('click');
+      expect(wrapper.state().showModal).to.be.true;
+  });
+
+  it('should pass the state showModal to <InvestModal/>', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      let showModal = wrapper.state().showModal;
+      expect(wrapper.find(InvestModal).prop('isOpen')).to.equal(showModal);
   });
 
 });

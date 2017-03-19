@@ -1,8 +1,22 @@
 import React from 'react';
 
 import LoanValues from './LoanValues.jsx';
+import InvestModal from './InvestModal.jsx';
 
 export default class Loan extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      showModal: false
+    }
+
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+  }
+
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
 
   render() {
     let { annualisedReturn, ltv: loanToValue } = this.props;
@@ -16,7 +30,12 @@ export default class Loan extends React.Component {
         <p>Tranche: {this.props.tranche}</p>
         <p>Amount: {this.props.amount}</p>
         <LoanValues {...props} />
-        <button>Invest in Loan</button>
+        <button onClick={this.handleOpenModal}>
+          Invest in Loan
+        </button>
+        <InvestModal
+           isOpen={this.state.showModal}
+        />
       </div>
     );
   }
