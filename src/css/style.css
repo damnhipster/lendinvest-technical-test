@@ -1,3 +1,31 @@
-h1 {
-  font-family: verdana;
+$lightGrey: #f3f3f3;
+
+h1, h2, h3 {
+  text-align: left;
+}
+
+#main {
+  margin: 0 auto;
+  max-width: 768px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.loan {
+  position: relative;
+  margin: 30px 0;
+  padding: 10px;
+  background: $lightGrey;
+  p {
+    margin: 0;
+  }
+  button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+  }
 }
