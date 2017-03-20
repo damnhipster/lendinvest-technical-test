@@ -1,6 +1,8 @@
 LendInvest Coding Test
 ======================
 
+![LendInvest Dashboard](resources/Screen\ Shot\ 2017-03-20\ at\ 02.18.28.png)
+
 ## Running
 Requires **Node.js 6.2.2**
 
