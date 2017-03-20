@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 
 app.get('/api/current-loans.json', function(req, res){
-  res.json(require('../docs/current-loans.json'));
+  res.json(require('../resources/current-loans.json'));
 });
 
 app.listen(8081);
