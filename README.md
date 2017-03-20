@@ -12,6 +12,8 @@ Commands:
 
 ## Technologies
 
+The entire stack was built from scratch and no boilerplate/scaffolding was used.
+
 ### Testing
 - **Mocha** - test runner
 - **Enzyme** - querying react components and some assertions
@@ -25,8 +27,9 @@ Commands:
 ### Libraries
 - **React** - as asked for
 - **react-modal** - popup when clicking on loans
-- **PostCSS** - Sass-like features (other useful plugins can be added later if needed)
 - **moment.js** - formatting time
+- **PostCSS** - Sass-like features (other useful plugins can be added later if needed)
+- **outnet-2015** - style library (written by me)
 
 Type checking has been added but the API response is currently not being converted to correct types.
 Introducing Redux should solve the problem, using reducers on the API response before putting it in a store.
