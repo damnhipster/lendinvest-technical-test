@@ -43,3 +43,6 @@ Future steps would include:
 - Use Redux stores for holding state, async actions for API calls.
 - Fix enzyme querying on certain tests
 - Use css modules to include css in React components
+
+## Test results:
+![Image of results](resources/test-results.png)
