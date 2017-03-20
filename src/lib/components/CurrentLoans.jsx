@@ -9,9 +9,10 @@ export default class CurrentLoans extends React.Component {
     super(props);
     this.state = {
       loans: props.loans.map((loan) => {
-        let { id=0, title, tranche, amount="0", ltv="0", annualised_return: annualisedReturn="0", term_remaining: termRemaining="0", available="0" } = loan;
+        let { id="0", title, tranche, amount="0", ltv="0", annualised_return: annualisedReturn="0", term_remaining: termRemaining="0", available="0" } = loan;
         return {
           ...loan,
+          key: Number.parseInt(id),
           id: Number.parseInt(id),
           title: title,
           tranche: tranche,
