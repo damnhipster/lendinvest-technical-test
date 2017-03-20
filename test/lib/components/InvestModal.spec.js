@@ -1,6 +1,6 @@
 import React from 'react';
-import {shallow} from 'enzyme';
-import chai, {expect} from 'chai';
+import { shallow } from 'enzyme';
+import chai, { expect } from 'chai';
 import spies from 'chai-spies';
 
 import InvestModal from '../../../src/lib/components/InvestModal.jsx';
@@ -52,26 +52,63 @@ describe('<InvestModal/>', function() {
     expect(wrapper.find(Modal).children().at(3).html()).to.equal(`<p>Loan ends in: ${moment.duration(99999, 'seconds').humanize()}</p>`);
   });
 
-  it('should contain a button to invest', function() {
-    const props = { ...defaultProps }
-    const wrapper = shallow(<InvestModal {...props} />);
-    expect(wrapper.find('button').html()).to.contain('Invest');
-  });
+  describe('investment form', function() {
 
-  describe('when Invest button is clicked', function() {
-
-    it('should close the modal', function() {
-      const props = { ...defaultProps, isOpen: true, close: chai.spy() }
-      let wrapper = shallow(<InvestModal {...props} />);
-      wrapper.find('button').simulate('click');
-      expect(props.close).to.have.been.called.once;
+    it('should contain a button to invest', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<InvestModal {...props} />);
+      expect(wrapper.find('button').html()).to.contain('Invest');
     });
 
-    it('should invest in the loan', function() {
-      const props = { ...defaultProps, isOpen: true, invest: chai.spy() }
-      let wrapper = shallow(<InvestModal {...props} />);
-      wrapper.find('button').simulate('click');
-      expect(props.invest).to.have.been.called.once;
+    describe('when an investment amount has been entered', function() {
+
+      it('button should be enabled', function() {
+        const props = { ...defaultProps, isOpen: true }
+        const wrapper = shallow(<InvestModal {...props} />);
+        wrapper.find('input').simulate('change', {target: {value: 9999}});
+        expect(wrapper.find('button').prop('disabled')).to.be.false;
+      });
+
+      it('should close the modal when button is clicked', function() {
+        const props = { ...defaultProps, isOpen: true, close: chai.spy() }
+        const wrapper = shallow(<InvestModal {...props} />);
+        wrapper.find('input').simulate('change', {target: {value: 9999}});
+        wrapper.find('button').simulate('click');
+        expect(props.close).to.have.been.called.once;
+      });
+
+      it('should invest in the loan when button is clicked', function() {
+        const props = { ...defaultProps, isOpen: true, invest: chai.spy() }
+        const wrapper = shallow(<InvestModal {...props} />);
+        wrapper.find('input').simulate('change', {target: {value: 9999}});
+        wrapper.find('button').simulate('click');
+        expect(props.invest).to.have.been.called.with(9999);
+      });
+
+    });
+
+    describe('when no investment amount has been entered', function() {
+
+      it('button should be disabled', function() {
+        const props = { ...defaultProps, isOpen: true }
+        const wrapper = shallow(<InvestModal {...props} />);
+        expect(wrapper.find('button').prop('disabled')).to.be.true;
+      });
+
+      it('should not close the modal when button is clicked', function() {
+        const props = { ...defaultProps, isOpen: true, close: chai.spy() }
+        const wrapper = shallow(<InvestModal {...props} />);
+        wrapper.find('button').simulate('click');
+        expect(props.close).not.to.have.been.called();
+      });
+
+      it('should not invest in the loan when button is clicked', function() {
+        const props = { ...defaultProps, isOpen: true, invest: chai.spy() }
+        const wrapper = shallow(<InvestModal {...props} />);
+        wrapper.find('button').simulate('click');
+        expect(props.invest).not.to.have.been.called();
+      });
+
     });
 
   });

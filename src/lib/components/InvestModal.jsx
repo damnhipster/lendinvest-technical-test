@@ -6,8 +6,30 @@ import moment from 'moment';
 
 export default class InvestModal extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
   render() {
     const { isOpen, close, title, invest, amountAvailable, remainingTime } = this.props;
+    const buttonProps = {}
+    if(this.state.value == '') {
+      buttonProps.disabled = true;
+      buttonProps.onClick = null;
+    } else {
+      buttonProps.disabled = false;
+      buttonProps.onClick = (function() {
+        invest(this.state.value);
+        close();
+      }).bind(this);
+    }
     return (
       <Modal
         className="modal"
@@ -19,12 +41,13 @@ export default class InvestModal extends React.Component {
         <p>{title}</p>
         <p>Amount available: {Money.format(amountAvailable)}</p>
         <p>Loan ends in: {moment.duration(Number.parseInt(remainingTime), 'seconds').humanize()}</p>
-        <div>
-          <button onClick={function() {
-            invest();
-            close();
-          }}>Invest</button>
-        </div>
+        <form>
+          <label className="with-input">
+            <span>Investment amount (£)</span>
+            <input type="text" placeholder="0" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <button { ...buttonProps }>Invest</button>
+        </form>
       </Modal>
     );
   }
