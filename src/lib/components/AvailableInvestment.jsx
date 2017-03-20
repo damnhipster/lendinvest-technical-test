@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
 
+import { Money } from '../utils/formatter.js';
+
 export default class AvailableInvestment extends React.Component {
 
   calculateAvailableInvestment(loans) {
@@ -15,7 +17,7 @@ export default class AvailableInvestment extends React.Component {
     const total = this.calculateAvailableInvestment(loans);
     return (
       <div>
-        <h3 className="slug">Total amount available for investments: {total}</h3>
+        <h3 className="slug">Total amount available for investments: {Money.format(total)}</h3>
       </div>
     );
   }

@@ -5,7 +5,7 @@ const money = {
     minimumFractionDigits: 0
   }),
   format: function (amount) {
-    return amount.replace ? this._formatter.format(amount.replace(/,/g, "")) : amount;
+    return this._formatter.format(amount.replace ? amount.replace(/,/g, "") : amount);
   }
 }
 

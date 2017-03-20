@@ -5,6 +5,7 @@ import {expect} from 'chai';
 import Loan from '../../../src/lib/components/Loan.jsx';
 import LoanValues from '../../../src/lib/components/LoanValues.jsx';
 import InvestModal from '../../../src/lib/components/InvestModal.jsx';
+import { Money } from '../../../src/lib/utils/formatter';
 
 describe('<Loan/>', function() {
 
@@ -44,7 +45,7 @@ describe('<Loan/>', function() {
   it('should contain the amount', function() {
     const props = { ...defaultProps, amount: 99999 }
     const wrapper = shallow(<Loan {...props} />);
-    expect(wrapper.children().at(2).html()).to.equal("<p>Amount: 99999</p>");
+    expect(wrapper.children().at(2).html()).to.equal(`<p>Amount: ${Money.format(99999)}</p>`);
   });
 
   it('should contain the <LoanValues/>', function() {

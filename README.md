@@ -20,6 +20,8 @@ Introducing Redux would solve the problem (explain where in redux this would be 
 
 A stub API has been created under `scripts/api-server.js`. This API has been called in `src/index.js`, but again, this responsibility can also be handled by Redux.
 
+I would generally squash my commits to make things easier to track, but I've left them as is so my development process can be reviewed.
+
 Future steps would include:
 Use Redux stores for holding state, async actions for API calls.
 Fix enzyme querying on certain tests

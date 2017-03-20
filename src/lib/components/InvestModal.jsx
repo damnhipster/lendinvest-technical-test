@@ -1,19 +1,22 @@
 import React, {PropTypes} from 'react';
+
 import ReactModal from 'react-modal';
+import { Money } from '../utils/formatter';
 
 export default class InvestModal extends React.Component {
 
   render() {
+    const { isOpen, close, title, amountAvailable, remainingTime } = this.props;
     return (
       <ReactModal
-        isOpen={this.props.isOpen}
-        onRequestClose={this.props.close}
+        isOpen={isOpen}
+        onRequestClose={close}
         contentLabel="InvestModal"
       >
         <h2>Invest in Loan</h2>
-        <p>{this.props.title}</p>
-        <p>Amount available: {this.props.amountAvailable}</p>
-        <p>Loan ends in: {this.props.remainingTime}</p>
+        <p>{title}</p>
+        <p>Amount available: {Money.format(amountAvailable)}</p>
+        <p>Loan ends in: {remainingTime}</p>
       </ReactModal>
     );
   }

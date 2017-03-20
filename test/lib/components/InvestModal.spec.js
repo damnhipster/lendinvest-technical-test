@@ -4,6 +4,7 @@ import {expect} from 'chai';
 
 import InvestModal from '../../../src/lib/components/InvestModal.jsx';
 import ReactModal from 'react-modal';
+import { Money } from '../../../src/lib/utils/formatter';
 
 describe('<InvestModal/>', function() {
 
@@ -37,7 +38,7 @@ describe('<InvestModal/>', function() {
   it('should contain the amount available to invest in the loan', function() {
     const props = { ...defaultProps, amountAvailable: 99999 }
     const wrapper = shallow(<InvestModal {...props} />);
-    expect(wrapper.find(ReactModal).children().at(2).html()).to.equal("<p>Amount available: 99999</p>");
+    expect(wrapper.find(ReactModal).children().at(2).html()).to.equal(`<p>Amount available: ${Money.format(99999)}</p>`);
   });
 
   it('should contain the remaining time left for the loan', function() {

@@ -3,6 +3,7 @@ import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
 import AvailableInvestment from '../../../src/lib/components/AvailableInvestment.jsx';
+import { Money } from '../../../src/lib/utils/formatter';
 
 describe('<AvailableInvestment/>', function() {
 
@@ -29,7 +30,7 @@ describe('<AvailableInvestment/>', function() {
       ]
     }
     const wrapper = shallow(<AvailableInvestment {...props} />);
-    expect(wrapper.html()).to.contain(`${ 1111 + 2222 }`);
+    expect(wrapper.html()).to.contain(Money.format(`${1111 + 2222}`));
   });
 
 });
