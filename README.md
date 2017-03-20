@@ -1,28 +1,41 @@
-Tech:
+LendInvest Coding Test
+======================
 
-Testing
-Mocha - test runner
-Enzyme - querying react components and some assertions
-Chai - assertions
+## Running
+Requires **Node.js 6.2.2**
 
-Build
-Webpack - dev server, generating a html page, compiling css and js
-Babel - ES6
-Express - stub API server
+Commands:
+- `npm start`
+- `npm test`
 
-Libraries
-React - as asked for
-react-modal - popup when clicking on loans
-PostCSS - Sass-like features (other useful plugins can be added later if needed)
+## Technologies
 
-Type checking added but API response is currently not being converted to correct types.
-Introducing Redux would solve the problem (explain where in redux this would be handled...)
+### Testing
+- **Mocha** - test runner
+- **Enzyme** - querying react components and some assertions
+- **Chai** - assertions
 
-A stub API has been created under `scripts/api-server.js`. This API has been called in `src/index.js`, but again, this responsibility can also be handled by Redux.
+### Build
+- **Webpack** - dev server, generating a html page, compiling css and js
+- **Babel** - ES6
+- **Express** - stub API server
 
-I would generally squash my commits to make things easier to track, but I've left them as is so my development process can be reviewed.
+### Libraries
+- **React** - as asked for
+- **react-modal** - popup when clicking on loans
+- **PostCSS** - Sass-like features (other useful plugins can be added later if needed)
+- **moment.js** - formatting time
+
+Type checking has been added but the API response is currently not being converted to correct types.
+Introducing Redux should solve the problem, using reducers on the API response before putting it in a store.
+
+A stub API has been created under `scripts/api-server.js`. This API response has been fetched in `src/index.js`, but again, this responsibility can also be handled by Redux.
+
+I would generally squash my commits into a more concise log to make things easier to track, but I've left them as is so my development process can be reviewed.
+
+I have yet to add the functionality to invest in loans and have it reflect across the app due to time constraints.
 
 Future steps would include:
-Use Redux stores for holding state, async actions for API calls.
-Fix enzyme querying on certain tests
-Use css modules to include css in React components
+- Use Redux stores for holding state, async actions for API calls.
+- Fix enzyme querying on certain tests
+- Use css modules to include css in React components
