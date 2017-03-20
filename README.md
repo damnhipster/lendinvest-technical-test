@@ -31,14 +31,13 @@ The entire stack was built from scratch and no boilerplate/scaffolding was used.
 - **PostCSS** - Sass-like features (other useful plugins can be added later if needed)
 - **outnet-2015** - style library (written by me)
 
-Type checking has been added but the API response is currently not being converted to correct types.
+Type checking has been added but the API response is currently being converted to correct types in a crude way.
 Introducing Redux should solve the problem, using reducers on the API response before putting it in a store.
 
-A stub API has been created under `scripts/api-server.js`. This API response has been fetched in `src/index.js`, but again, this responsibility can also be handled by Redux.
+A stub API has been created under `scripts/api-server.js`. This API response has been fetched, but again, this responsibility can also be handled by Redux.
 
 I would generally squash my commits into a more concise log to make things easier to track, but I've left them as is so my development process can be reviewed.
 
-I have yet to add the functionality to invest in loans and have it reflect across the app due to time constraints.
 
 Future steps would include:
 - Use Redux stores for holding state, async actions for API calls.
