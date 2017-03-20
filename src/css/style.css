@@ -22,6 +22,13 @@ ul {
   p {
     margin: 0;
   }
+  .badge {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    color: green;
+  }
   button {
     position: absolute;
     right: 0;

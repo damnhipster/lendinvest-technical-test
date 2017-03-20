@@ -7,7 +7,7 @@ import moment from 'moment';
 export default class InvestModal extends React.Component {
 
   render() {
-    const { isOpen, close, title, amountAvailable, remainingTime } = this.props;
+    const { isOpen, close, title, invest, amountAvailable, remainingTime } = this.props;
     return (
       <Modal
         className="modal"
@@ -20,7 +20,10 @@ export default class InvestModal extends React.Component {
         <p>Amount available: {Money.format(amountAvailable)}</p>
         <p>Loan ends in: {moment.duration(Number.parseInt(remainingTime), 'seconds').humanize()}</p>
         <div>
-          <button onClick={close}>Invest</button>
+          <button onClick={function() {
+            invest();
+            close();
+          }}>Invest</button>
         </div>
       </Modal>
     );
@@ -31,6 +34,7 @@ export default class InvestModal extends React.Component {
 InvestModal.propTypes = {
   isOpen: PropTypes.bool,
   close: PropTypes.func,
+  invest: PropTypes.func,
   title: PropTypes.string,
   amountAvailable: PropTypes.number,
   remainingTime: PropTypes.number

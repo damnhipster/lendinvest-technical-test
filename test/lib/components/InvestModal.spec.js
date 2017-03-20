@@ -14,7 +14,8 @@ describe('<InvestModal/>', function() {
 
   const defaultProps = {
     isOpen: false,
-    close: null,
+    close: function() {},
+    invest: function() {},
     title: '',
     amountAvailable: 0,
     remainingTime: 0
@@ -64,6 +65,13 @@ describe('<InvestModal/>', function() {
       let wrapper = shallow(<InvestModal {...props} />);
       wrapper.find('button').simulate('click');
       expect(props.close).to.have.been.called.once;
+    });
+
+    it('should invest in the loan', function() {
+      const props = { ...defaultProps, isOpen: true, invest: chai.spy() }
+      let wrapper = shallow(<InvestModal {...props} />);
+      wrapper.find('button').simulate('click');
+      expect(props.invest).to.have.been.called.once;
     });
 
   });

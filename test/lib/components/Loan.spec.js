@@ -67,36 +67,63 @@ describe('<Loan/>', function() {
     expect(wrapper.find('button').text()).to.equal('Invest in Loan');
   });
 
-  it('should contain an <InvestModal/>', function() {
+  it('should contain an Invested label when loan has been invested in', function() {
     const props = { ...defaultProps }
     const wrapper = shallow(<Loan {...props} />);
-    expect(wrapper.find(InvestModal).exists()).to.be.true;
+    wrapper.instance().handleInvest();
+    expect(wrapper.contains(<p className="badge">Invested</p>)).to.be.true;
   });
 
-  it('should show the <InvestModal/> when the button is clicked', function() {
+  it('should not contain an Invested label when loan has not been invested in', function() {
     const props = { ...defaultProps }
     const wrapper = shallow(<Loan {...props} />);
-    wrapper.find('button').simulate('click');
-    expect(wrapper.state().showModal).to.be.true;
+    expect(wrapper.contains(<p className="badge">Invested</p>)).to.be.false;
   });
 
-  it('should set isOpen in <InvestModal/>', function() {
-    const props = { ...defaultProps }
-    const wrapper = shallow(<Loan {...props} />);
-    let showModal = wrapper.state().showModal;
-    expect(wrapper.find(InvestModal).prop('isOpen')).to.equal(showModal);
-  });
+  describe('<InvestModal/>)', function() {
 
-  it('should set close in <InvestModal/>', function() {
-    const props = { ...defaultProps }
-    const wrapper = shallow(<Loan {...props} />);
-    expect(wrapper.find(InvestModal).prop('close')).to.equal(wrapper.instance().handleCloseModal);
-  });
+    it('should exist', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      expect(wrapper.find(InvestModal).exists()).to.be.true;
+    });
 
-  it('should set title, amount available and remaining time in <InvestModal/>', function() {
-    const props = { ...defaultProps }
-    const wrapper = shallow(<Loan {...props} />);
-    expect(wrapper.find(InvestModal).props()).to.contain.all.keys(['title', 'amountAvailable', 'remainingTime']);
+    it('should show  when the button is clicked', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      wrapper.find('button').simulate('click');
+      expect(wrapper.state().showModal).to.be.true;
+    });
+
+    it('should set isOpen in <InvestModal/>', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      let showModal = wrapper.state().showModal;
+      expect(wrapper.find(InvestModal).prop('isOpen')).to.equal(showModal);
+    });
+
+    it('should set a close function in <InvestModal/>', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      expect(wrapper.find(InvestModal).prop('close'))
+        .to.equal(wrapper.instance().handleCloseModal)
+        .and.not.be.undefined;
+    });
+
+    it('should set an invest function in <InvestModal/>', function () {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      expect(wrapper.find(InvestModal).prop('invest'))
+        .to.equal(wrapper.instance().handleInvest)
+        .and.not.be.undefined;
+    });
+
+    it('should set title, amount available and remaining time in <InvestModal/>', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      expect(wrapper.find(InvestModal).props()).to.contain.all.keys(['title', 'amountAvailable', 'remainingTime']);
+    });
+
   });
 
 });

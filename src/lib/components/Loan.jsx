@@ -9,11 +9,13 @@ export default class Loan extends React.Component {
   constructor() {
     super();
     this.state = {
-      showModal: false
+      showModal: false,
+      invested: false
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleInvest = this.handleInvest.bind(this);
   }
 
   handleOpenModal () {
@@ -22,6 +24,10 @@ export default class Loan extends React.Component {
 
   handleCloseModal () {
     this.setState({ showModal: false });
+  }
+
+  handleInvest() {
+    this.setState({ invested: true });
   }
 
   render() {
@@ -46,10 +52,12 @@ export default class Loan extends React.Component {
         <button onClick={this.handleOpenModal}>
           Invest in Loan
         </button>
+        { this.state.invested ? <p className="badge">Invested</p> : null }
         <InvestModal
           {...props.investModal}
           isOpen={this.state.showModal}
           close={this.handleCloseModal}
+          invest={this.handleInvest}
         />
       </div>
     );
