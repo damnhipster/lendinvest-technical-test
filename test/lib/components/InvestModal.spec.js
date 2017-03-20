@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
-import InvestModal from '../../src/lib/InvestModal.jsx';
+import InvestModal from '../../../src/lib/components/InvestModal.jsx';
 import ReactModal from 'react-modal';
 
 describe('<InvestModal/>', function() {

@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
-import AvailableInvestment from '../../src/lib/AvailableInvestment.jsx';
+import AvailableInvestment from '../../../src/lib/components/AvailableInvestment.jsx';
 
 describe('<AvailableInvestment/>', function() {
 

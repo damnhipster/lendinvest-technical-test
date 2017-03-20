@@ -15,7 +15,7 @@ export default class AvailableInvestment extends React.Component {
     const total = this.calculateAvailableInvestment(loans);
     return (
       <div>
-        <p>Total amount available for investments: {total}</p>
+        <h3 className="slug">Total amount available for investments: {total}</h3>
       </div>
     );
   }

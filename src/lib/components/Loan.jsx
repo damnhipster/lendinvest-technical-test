@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-
+import { Money } from '../utils/formatter.js';
 import LoanValues from './LoanValues.jsx';
 import InvestModal from './InvestModal.jsx';
 
@@ -37,10 +37,10 @@ export default class Loan extends React.Component {
       }
     };
     return (
-      <div>
+      <div className="loan">
         <h2>{title}</h2>
         <p>Tranche: {tranche}</p>
-        <p>Amount: {amount}</p>
+        <p>Amount: {Money.format(amount)}</p>
         <LoanValues {...props.loanValue} />
         <button onClick={this.handleOpenModal}>
           Invest in Loan

@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
 
-import LoanValues from '../../src/lib/LoanValues.jsx';
+import LoanValues from '../../../src/lib/components/LoanValues.jsx';
 
 describe('<LoanValues/>', function() {
 
