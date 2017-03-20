@@ -1,11 +1,14 @@
 import React from 'react';
-import {shallow} from 'enzyme';
-import {expect} from 'chai';
+import { shallow } from 'enzyme';
+import chai, { expect } from 'chai';
+import spies from 'chai-spies';
 
 import Loan from '../../../src/lib/components/Loan.jsx';
 import LoanValues from '../../../src/lib/components/LoanValues.jsx';
 import InvestModal from '../../../src/lib/components/InvestModal.jsx';
 import { Money } from '../../../src/lib/utils/formatter';
+
+chai.use(spies);
 
 describe('<Loan/>', function() {
 
@@ -13,7 +16,8 @@ describe('<Loan/>', function() {
     title: "",
     tranche: "",
     amount: 0,
-    annualisedReturn: 0
+    annualisedReturn: 0,
+    invest: function() {}
   };
 
   describe('#constructor', function() {
@@ -78,6 +82,24 @@ describe('<Loan/>', function() {
     const props = { ...defaultProps }
     const wrapper = shallow(<Loan {...props} />);
     expect(wrapper.contains(<p className="badge">Invested</p>)).to.be.false;
+  });
+
+  describe('#handleInvest()', function() {
+
+    it('should set invested to be true', function() {
+      const props = { ...defaultProps }
+      const wrapper = shallow(<Loan {...props} />);
+      wrapper.instance().handleInvest();
+      expect(wrapper.state('invested')).to.be.true;
+    });
+
+    it('should call the prop invest function', function() {
+      const props = { ...defaultProps, id: 1, invest: chai.spy() }
+      const wrapper = shallow(<Loan {...props} />);
+      wrapper.instance().handleInvest(9999);
+      expect(props.invest).to.have.been.called.with({ id: 1, amount: 9999 });
+    });
+
   });
 
   describe('<InvestModal/>)', function() {

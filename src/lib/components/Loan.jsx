@@ -26,12 +26,13 @@ export default class Loan extends React.Component {
     this.setState({ showModal: false });
   }
 
-  handleInvest() {
+  handleInvest(amount) {
+    this.props.invest({ id: this.props.id, amount: amount });
     this.setState({ invested: true });
   }
 
   render() {
-    let { annualisedReturn, ltv, title, tranche, amount, available, termRemaining } = this.props;
+    let { annualisedReturn, ltv, title, tranche, amount, available, termRemaining, invest } = this.props;
     const props = {
       loanValue: {
         annualisedReturn: annualisedReturn,
@@ -72,5 +73,6 @@ Loan.propTypes = {
   tranche: PropTypes.string,
   amount: PropTypes.number,
   available: PropTypes.number,
-  termRemaining: PropTypes.number
+  termRemaining: PropTypes.number,
+  invest: PropTypes.func
 }
