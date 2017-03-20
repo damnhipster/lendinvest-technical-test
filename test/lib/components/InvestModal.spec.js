@@ -5,6 +5,7 @@ import {expect} from 'chai';
 import InvestModal from '../../../src/lib/components/InvestModal.jsx';
 import ReactModal from 'react-modal';
 import { Money } from '../../../src/lib/utils/formatter';
+import moment from 'moment';
 
 describe('<InvestModal/>', function() {
 
@@ -44,7 +45,7 @@ describe('<InvestModal/>', function() {
   it('should contain the remaining time left for the loan', function() {
     const props = { ...defaultProps, remainingTime: 99999 }
     const wrapper = shallow(<InvestModal {...props} />);
-    expect(wrapper.find(ReactModal).children().at(3).html()).to.equal("<p>Loan ends in: 99999</p>");
+    expect(wrapper.find(ReactModal).children().at(3).html()).to.equal(`<p>Loan ends in: ${moment.duration(99999, 'seconds').humanize()}</p>`);
   });
 
 });
