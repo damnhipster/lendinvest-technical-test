@@ -29,7 +29,7 @@ The entire stack was built from scratch and no boilerplate/scaffolding was used.
 - **react-modal** - popup when clicking on loans
 - **moment.js** - formatting time
 - **PostCSS** - Sass-like features (other useful plugins can be added later if needed)
-- **outnet-2015** - style library (written by me)
+- **outnet-2015** - style library (written by me) 
 
 Type checking has been added but the API response is currently being converted to correct types in a [crude way](src/lib/components/CurrentLoans.jsx#L11).
 Introducing Redux should solve the problem, using reducers on the API response before putting it in a store.
@@ -41,8 +41,8 @@ I would generally squash my commits into a more concise log to make things easie
 
 Future steps would include:
 - Use Redux stores for holding state, async actions for API calls.
-- Fix enzyme querying on certain tests
-- Use css modules to include css in React components
+- Fix enzyme querying on certain tests.
+- Use css modules to include css in React components rather than a global stylesheet.
 
 ## Test results:
 ![Image of results](resources/test-results.png)
